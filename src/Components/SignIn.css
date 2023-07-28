@@ -1,0 +1,12 @@
+.signIn{
+    margin:8rem auto 6rem;
+    width: 100%;
+    max-width: 40rem;
+    border : 1px solid black;
+    text-transform: uppercase;
+    padding: 20px 20px;
+}
+
+.signIn Button{
+    background-color: rgb(12, 11, 11);
+}
