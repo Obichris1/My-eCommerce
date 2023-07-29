@@ -6,6 +6,7 @@ import Products from './Pages/Products';
 import Cart from './Pages/Cart';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
+import { auth} from './Firebase/utils'
 
 
 function App() {
