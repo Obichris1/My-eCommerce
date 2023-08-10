@@ -1,8 +1,11 @@
 import React from 'react'
+import Navbar from '../Components/Navbar'
 
-const Products = () => {
+const Products = (props) => {
+  const { currentUser} = props
   return (
-    <div>Products</div>
+    <div>  <Navbar currentUser ={currentUser}   />
+    </div>
   )
 }
 

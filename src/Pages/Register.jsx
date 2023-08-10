@@ -1,8 +1,10 @@
 import React from 'react'
+import Navbar from '../Components/Navbar'
 
-const Register = () => {
+const Register = (props) => {
+  const { currentUser} = props
   return (
-    <div>Register</div>
+    <div>  <Navbar currentUser ={currentUser}   /></div>
   )
 }
 

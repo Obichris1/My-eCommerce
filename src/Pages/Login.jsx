@@ -3,10 +3,12 @@ import React from 'react'
 import SignIn from '../Components/SignIn'
 import Navbar from '../Components/Navbar'
 
-const Login = () => {
+const Login = (props) => {
+
+  const { currentUser } =  props    
   return (
     <div>
-    <Navbar />
+    <Navbar currentUser ={currentUser}/>
     <SignIn />
     </div>
   )

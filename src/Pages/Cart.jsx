@@ -1,8 +1,10 @@
 import React from 'react'
+import Navbar from '../Components/Navbar'
 
-const Cart = () => {
+const Cart = (props) => {
+  const { currentUser} = props
   return (
-    <div>Cart</div>
+    <div>  <Navbar currentUser ={currentUser}   /></div>
   )
 }
 
