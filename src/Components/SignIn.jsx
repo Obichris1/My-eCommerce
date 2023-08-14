@@ -1,7 +1,8 @@
 import React from 'react'
-import { Stack, Typography,Button } from '@mui/material'
+import { Stack, Typography } from '@mui/material'
 import './SignIn.css'
 import { signInWithGoogle } from '../Firebase/utils'
+import  Button from './Form/Button'
 
 const SignIn = () => {
   const handleSubmit = async (e) => {
@@ -10,12 +11,12 @@ const SignIn = () => {
   }
 
   return (
-    <Stack className='signIn' gap='40px' >
+    <Stack className='signIn wrap' gap='40px' >
         <Typography variant='h3'>
             Login
         </Typography>
           <form onSubmit={handleSubmit}>
-          <Button variant='contained' onClick={signInWithGoogle}>
+          <Button onClick={signInWithGoogle}>
         SignIn with Google
         </Button>
           </form>
