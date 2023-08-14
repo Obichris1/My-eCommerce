@@ -68,7 +68,7 @@ console.log(currentUser);
     <Route path='/about' element={<About currentUser = {currentUser}/>} />
     <Route path='/products' element={<Products />} />
     <Route path='/cart' element={<Cart currentUser = {currentUser}/>} />
-    <Route path='/register' element={<Register currentUser = {currentUser}/>} />
+    <Route path='/register' element={currentUser ? <Navigate to='/'  /> :  <Register currentUser = {currentUser}/>} />
     <Route path='/login' element={currentUser ?   <Navigate to="/" />  : <Login currentUser = {currentUser}/>} />
 
    </Routes>

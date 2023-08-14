@@ -32,7 +32,9 @@ const SignUp = () => {
 
     try {
       const {user} = await createUserWithEmailAndPassword(auth,email,password)
-      await handleUserProfile(user, {displayName})
+      await handleUserProfile(user, { displayName })
+
+      setState({...initialState})
 
     } catch (error) {
       console.log(error);
