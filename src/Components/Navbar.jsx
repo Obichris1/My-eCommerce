@@ -8,7 +8,7 @@ import {auth} from '../Firebase/utils'
 
 const Navbar = (props) => {
 const {currentUser } = props
-console.log(currentUser); 
+// console.log(currentUser); 
 
   return (
     <div id='nav'>

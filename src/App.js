@@ -5,10 +5,12 @@ import About from './Pages/About';
 import Products from './Pages/Products';
 import Cart from './Pages/Cart';
 import Login from './Pages/Login';
+import Recovery from './Pages/Recovery';
 import Register from './Pages/Register';
 import { auth, handleUserProfile} from './Firebase/utils'
 import { useState , useEffect } from 'react';
 import { onSnapshot } from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
 
 
 function App() {
@@ -23,7 +25,7 @@ function App() {
 
   useEffect (() => {
     let authListener = null
-    authListener = auth.onAuthStateChanged(async (userAuth) => {
+    authListener = onAuthStateChanged(auth, async (userAuth) => {
 
       // if(!userAuth){
       //   setState(initialState)
@@ -70,7 +72,7 @@ console.log(currentUser);
     <Route path='/cart' element={<Cart currentUser = {currentUser}/>} />
     <Route path='/register' element={currentUser ? <Navigate to='/'  /> :  <Register currentUser = {currentUser}/>} />
     <Route path='/login' element={currentUser ?   <Navigate to="/" />  : <Login currentUser = {currentUser}/>} />
-
+    <Route path='/recovery' element= {<Recovery/>}/>
    </Routes>
 
       

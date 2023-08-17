@@ -17,6 +17,7 @@ GoogleProvider.setCustomParameters({prompt : 'select_account'})
 export const signInWithGoogle = () => signInWithPopup(auth, GoogleProvider)
 
 
+
 // handling users in the firestore database
 
 export const handleUserProfile = async (userAuth , additionalData) => {
@@ -25,7 +26,7 @@ export const handleUserProfile = async (userAuth , additionalData) => {
 
     const {uid} = userAuth    //destructuing the uid from the userAuth(user)
 
-    const userRef = doc(firestore,  `users/${uid}`)   // returns a document that we can later add data to. 
+    const userRef = doc(firestore,  `users/${uid}`)   // returns a document that we can later add data to.(DOCUMENT REFERENCE) 
 
     const snapShot = await getDoc(userRef);        // the .get() method returns an object of the users
     
@@ -34,15 +35,19 @@ export const handleUserProfile = async (userAuth , additionalData) => {
         const{displayName, email} = userAuth;
         const timeStamp = new Date()
 
+
+        const data = {
+            displayName,
+            email,
+            createdDate : timeStamp,
+            ...additionalData
+}
+
         try {
 
-             await setDoc( userRef,{                              //set a user 
-                displayName,
-                email,
-                createdDate : timeStamp,
-                ...additionalData
-
-            })         
+             await setDoc( userRef, {data}
+            )   
+                
             
         } catch (error) {
             console.log(error);
