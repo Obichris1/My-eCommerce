@@ -5,13 +5,17 @@ import Button from "./Form/Button";
 import { useState } from "react";
 import { auth } from "../Firebase/utils";
 import { sendPasswordResetEmail } from "firebase/auth";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import { withRouter } from "./withRouter";
 
 const EmailPassword = () => {
+
+  const navigate = useNavigate()
+
   const [email, setEmail] = useState("");
 
-  const [errors, setErrors] = useState("");
+  const [errors, setErrors] = useState([]);
 
   const emailHandler = (e) => {
     setEmail(e.target.value);
@@ -27,27 +31,36 @@ const EmailPassword = () => {
       };
       await sendPasswordResetEmail(auth, email, config)
         .then(() => {
-          <Link to="/login"></Link>;
+          console.log('helllooo');
+          navigate('/login')
+          
         })
 
         .catch(() => {
+          console.log('hiiii');
           const err = ["Email not found"];
           setErrors(err);
+          console.log(errors); 
+          setEmail('')
         });
     } catch (error) {
+      // console.log('hiiii');
       // console.log(error);
     }
   };
 
   return (
     <AuthWrapper>
+      {console.log(errors)}
+      {console.log(errors.length)}
       {errors.length > 0 && (
         <ul>
-          {errors.map((e, index) => {
-            <li key={index}>{e}</li>;
-          })}
+          {errors.map((e, index) => (
+            <li key={index}>{e}</li>
+          ))}
         </ul>
-      )}
+            
+      ) }
       <form onSubmit={submitHandler}>
         <Input
           type="email"

@@ -40,10 +40,8 @@ const SignIn = () => {
 
       await signInWithEmailAndPassword(auth, email, password)
 
-      // setState({
-      //   ...initialState,
-      // });
-
+     setEmail('');
+     setPassword('')
      
       
     } catch (error) {
