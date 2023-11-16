@@ -12,8 +12,7 @@ const HeroSection = () => {
         <img src={shopWomen} alt="shopWomen" />
     </Stack>
 
-    <button className='men'>shop men</button>
-    <button className= 'women'>shop Women</button>
+    
     </div>
   )
 }

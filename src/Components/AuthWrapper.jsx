@@ -1,13 +1,11 @@
-import React from 'react'
-import './AuthWrapper.css'
-const AuthWrapper = ({children}) => {
+import React from "react";
+import "./AuthWrapper.css";
+const AuthWrapper = ({ children }) => {
   return (
-    <div className='authWrapper'>
-     
-
-        <div>{children}</div>
+    <div className="authWrapper">
+      <div>{children}</div>
     </div>
-  )
-}
+  );
+};
 
-export default AuthWrapper
+export default AuthWrapper;

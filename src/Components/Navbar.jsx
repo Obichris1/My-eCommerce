@@ -1,14 +1,18 @@
 import React from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { Box, Stack } from "@mui/material";
 import FaCart, { FaCartPlus } from "react-icons/fa";
 import "./Navbar.css";
 import { auth } from "../Firebase/utils";
 
-const Navbar = (props) => {
-  const { currentUser } = props;
+const mapState = (state) => ({
+  currentUser: state.user.currentUser
+});
 
+const Navbar = (props) => {
+  const { currentUser } = useSelector( mapState );
+ const navigate = useNavigate()
   return (
     <div id="nav">
       <Stack
@@ -41,7 +45,7 @@ const Navbar = (props) => {
           </Stack>
         )}
 
-        {currentUser && <Link onClick={() => auth.signOut()}>LogOut</Link>}
+        {currentUser && <Link onClick={() => auth.signOut()}>LogOut</Link> }
       </Stack>
     </div>
   );
@@ -50,8 +54,6 @@ Navbar.defaultProps = {
   currentUser: null,
 };
 
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser
-});
 
-export default connect(mapStateToProps, null)(Navbar);
+
+export default Navbar;

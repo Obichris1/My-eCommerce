@@ -1,4 +1,4 @@
-import { Routes, Route,Navigate } from 'react-router-dom';
+import { Routes, Route,useNavigate,redirect } from 'react-router-dom';
 import './App.css';
 import Home from './Pages/Home';
 import About from './Pages/About';
@@ -13,14 +13,18 @@ import { onSnapshot } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { setCurrentUser } from './redux/User/user.action';
 import { connect } from 'react-redux';
-import {  useSelector,useDispatch } from 'react-redux/es/hooks/useSelector';
+import {  useSelector,useDispatch } from 'react-redux'
 
 
 function App(props) {
+  // const mapState = (state) => ({
+  //   currentUser : state.user.currentUser
+  // })
+  const navigate = useNavigate()
 
 
-
-  // const [state, setState ] = useState(initialState)
+ const dispatch = useDispatch()
+//  const setCurrentUser  = useSelector(mapState)
 
 
   useEffect (() => {
@@ -38,16 +42,17 @@ function App(props) {
       if(userAuth) {
         const userRef = await handleUserProfile(userAuth)
         onSnapshot(userRef,snapshot => {
-          props.setCurrentUser({
+          dispatch(setCurrentUser({
           
               id : snapshot.id,
               ...snapshot.data()
             
-          })
+          }))
         })
       }
 
-     props.setCurrentUser(userAuth)
+     dispatch(setCurrentUser(userAuth))
+
 
     })
 
@@ -58,17 +63,17 @@ function App(props) {
   },[])
 
 const {currentUser} = props 
-console.log(currentUser);
+console.log(currentUser); 
   return (
     <div className="App">
 
    <Routes>
     <Route exact path='/' element={<Home />} />
-    <Route path='/about' element={<About />} />
-    <Route path='/products' element={<Products />} />
-    <Route path='/cart' element={<Cart />} />
-    <Route path='/register' element={currentUser ? <Navigate to='/'  /> :  <Register />} />
-    <Route path='/login' element={currentUser ?   <Navigate to="/" />  : <Login />} />
+    <Route path='/' element={<About />} />
+    <Route path='/' element={<Products />} />
+    <Route path='/' element={<Cart />} />
+    <Route path='/register' element={currentUser ? redirect('/')  :  <Register />} />
+    <Route path='/login' element={currentUser ?   redirect('/')   : <Login />} />
     <Route path='/recovery' element= {<Recovery/>}/>
    </Routes>
 
@@ -78,14 +83,11 @@ console.log(currentUser);
   );
 }
 
-const mapStateToProps = (state) => ({
-  currentUser : state.user.currentUser
-})
 
-const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser : user => dispatch(setCurrentUser(user))
+// const mapDispatchToProps = (dispatch) => ({
+//   setCurrentUser : user => dispatch(setCurrentUser(user))
 
-})
+// })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
