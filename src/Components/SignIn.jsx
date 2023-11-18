@@ -45,6 +45,7 @@ const dispatch = useDispatch()
 useEffect(() => {
   if (currentUser) {
     resetForm();
+    dispatch(resetAllAuthForms());
     navigate('/');
   }
 
@@ -132,7 +133,7 @@ useEffect(() =>{
       </form>
       <Button onClick={signInWithGoogle}>SignIn with Google</Button>
 
-      <Link to='/recovery'>Forgot Password? Reset your password</Link>
+      {/* <Link to='/recovery'>Forgot Password? Reset your password</Link> */}
     </Stack>
     </AuthWrapper>
     

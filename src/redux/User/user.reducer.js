@@ -59,6 +59,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
               ...state,
               signInSuccess : false,
               signUpError : [],
+              signInError : [],
               signUpSuccess : false,
               resetPasswordSuccess : false,
               resetPasswordError : []

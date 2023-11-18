@@ -4,3 +4,15 @@
    width: 100%;
    top: 0;
 }
+
+#nav .links2{
+   display: none;
+}
+
+
+@media  screen and (min-width: 1024px) {
+   #nav .links2{
+      display: block;
+   }
+   
+}

@@ -27,15 +27,15 @@ const Navbar = (props) => {
       >
         <Link to="/">LOGO</Link>
 
-        <Stack direction="row" gap="30px" paddingLeft="00px">
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/products">Product</Link>
+        <Stack direction="row" gap="30px" paddingLeft="00px" className="links2">
+          <Link to="/" >Home</Link>
+          <Link to="/">About</Link>
+          <Link to="/">Product</Link>
         </Stack>
 
         {!currentUser && (
           <Stack direction="row" gap="30px">
-            <Link to="/cart" margin="100px">
+            <Link to="/" margin="100px">
               <span>
                 <FaCartPlus size={30} />
               </span>

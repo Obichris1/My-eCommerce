@@ -9,12 +9,16 @@ import { getFirestore,doc,setDoc, collection,getDoc,on} from 'firebase/firestore
 
 const app = initializeApp(firebaseConfig);
 
-export const auth = getAuth(app)
+export const auth = getAuth(app)    
 export const firestore = getFirestore(app)
 
 const GoogleProvider = new GoogleAuthProvider()
 GoogleProvider.setCustomParameters({prompt : 'select_account'})
-export const signInWithGoogle = () => signInWithPopup(auth, GoogleProvider)
+export const signInWithGoogle = () => signInWithPopup(auth, GoogleProvider).then((result) => {
+    console.log(result);
+}).catch((error) => {
+    console.log(error);
+})
 
 
 

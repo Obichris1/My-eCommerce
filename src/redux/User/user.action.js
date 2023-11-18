@@ -78,14 +78,14 @@ export const SignUpUser = ({displayName,email,password,confirmPassword}) => asyn
 }
 
 
-export const resetPassword = ({auth, email, config}) => async dispatch => {
+export const resetPassword = ({auth, email}) => async dispatch => {
   const config = {
     url: "http://localhost:3000/login",
   };
 
   try {
     
-    await sendPasswordResetEmail(auth, email, config)
+    await sendPasswordResetEmail(auth, email)
       .then(() => {
         console.log('Reset email sent');
         
