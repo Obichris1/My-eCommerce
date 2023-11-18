@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.58097bd5.css",
+    "main.js": "/static/js/main.609eb331.js",
+    "static/media/shopMen.jpg": "/static/media/shopMen.1c0c2810ebfe22d0cebc.jpg",
+    "static/media/shop-women.jpg": "/static/media/shop-women.ba3ca74ffb5d42d76f99.jpg",
+    "index.html": "/index.html",
+    "main.58097bd5.css.map": "/static/css/main.58097bd5.css.map",
+    "main.609eb331.js.map": "/static/js/main.609eb331.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.58097bd5.css",
+    "static/js/main.609eb331.js"
+  ]
+}
